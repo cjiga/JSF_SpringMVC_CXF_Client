@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<h:outputStylesheet name="style.css" library="css" />
+	</h:head>
+
+	<h:form>
+			<p:panelMenu style="width:150px">
+				<p:submenu label="Pelicula">
+					<p:menuitem value="Mantenimiento"
+						action="/pages/administrar/pelicula" icon="ui-icon-disk" />
+					<p:menuitem value="Actor"
+						action="/pages/administrar/actor" icon="ui-icon-disk" />
+					<p:menuitem value="Director"
+						action="/pages/administrar/director" icon="ui-icon-disk" />
+					<p:menuitem value="Genero"
+						action="/pages/administrar/genero" icon="ui-icon-disk" />
+				</p:submenu>
+				
+				<p:submenu label="Funcion">
+					<p:menuitem value="Funcion" action="/pages/administrar/funcion"
+						icon="ui-icon-close" />
+					<p:menuitem value="Sala" action="/pages/administrar/sala"
+						icon="ui-icon-close" />
+				</p:submenu>
+				
+				<p:submenu label="Usuario">
+					<p:menuitem value="Sala" action="/pages/administrar/sala"
+						icon="ui-icon-close" />
+				</p:submenu>
+				
+			</p:panelMenu>
+
+		</h:form>
+</ui:composition>
+
+
+
+

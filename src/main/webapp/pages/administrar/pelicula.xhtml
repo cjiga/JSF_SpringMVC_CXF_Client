@@ -1,0 +1,49 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/templateAdministrador.xhtml">
+
+	<h:head>
+		<h:outputStylesheet name="style.css" library="css" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</h:head>
+
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Director" />
+				<h:inputText id="director" value=""></h:inputText>
+
+				<h:outputLabel value="Genero" />
+				<h:inputText id="genero" value=""></h:inputText>
+
+				<h:outputLabel value="País" />
+				<h:inputText id="pais" value=""></h:inputText>
+
+				<h:outputLabel value="Título" />
+				<h:inputText id="titulo" value=""></h:inputText>
+
+				<h:outputLabel value="Sinopsis" />
+				<h:inputText id="sinopsis" value=""></h:inputText>
+
+				<h:outputLabel value="Duración" />
+				<h:inputText id="duracion" value=""></h:inputText>
+
+				<h:outputLabel value="Sitio Web" />
+				<h:inputText id="sitioWeb" value=""></h:inputText>
+
+				<h:outputLabel value="Fecha Estreno" />
+				<h:inputText id="fechaEstreno" value=""></h:inputText>
+
+				<h:outputLabel value="Estado" />
+				<h:inputText id="estado" value=""></h:inputText>
+				
+				<p:commandButton value="Grabar"></p:commandButton>
+			</h:panelGrid>
+		</h:form>
+		
+		
+	</ui:define>
+</ui:composition>

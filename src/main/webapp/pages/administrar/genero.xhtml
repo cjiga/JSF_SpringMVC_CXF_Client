@@ -1,0 +1,109 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/templateAdministrador.xhtml">
+
+	<h:head>
+		<h:outputStylesheet name="style.css" library="css" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</h:head>
+
+	<ui:define name="content">
+
+
+		<h:form>
+			<p:commandButton value="Nuevo Genero" icon="ui-icon-document" actionListener="#{generoMB.prepararInsertar}" update=":frmNuevo:pgNuevo"
+				oncomplete="dlgNuevo.show()" />
+		</h:form>
+
+		<br />
+
+		<h:form id="lstGenero">
+			<p:dataTable id="datatable" var="g"
+				value="#{generoMB.lstGenero}">
+				<p:column headerText="ID">
+					<h:outputText value="#{g.idGenero}" />
+				</p:column>
+
+				<p:column headerText="DESCRIPCION">
+					<h:outputText value="#{g.descripcion}" />
+				</p:column>
+
+				<p:column headerText="ESTADO">
+					<h:outputText value="#{g.estado}" />
+				</p:column>
+
+				<p:column style="width:10%; text-align:center">
+					<p:commandButton update=":lstGenero" oncomplete="dlgEditar.show()"
+						icon="ui-icon-pencil" title="Editar" actionListener="#{generoMB.prepararEditar}"/>
+						
+					<p:commandButton update=":lstGenero" oncomplete="carDialog.show()"
+						icon="ui-icon-trash" title="Eliminar" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+		<h:form id="frmNuevo">
+			<p:dialog header="Nuevo Genero" widgetVar="dlgNuevo"
+				resizable="false" id="dlgNuevo" showEffect="fade"
+				hideEffect="explode" modal="false">
+
+				<p:growl id="growlNuevo" showDetail="true" sticky="true" />
+
+				<h:panelGrid id="pgNuevo" columns="2" cellpadding="4"
+					style="margin:0 auto;">
+
+					<h:outputText value="Descripción:" />
+					<p:inputText value="#{generoMB.genero.descripcion}" />
+
+					<h:outputText value="Estado:" />
+					<p:selectOneMenu id="estado" value="#{generoMB.genero.estado}">
+						<f:selectItem itemLabel="--Selecciones--" itemValue="" />
+						<f:selectItem itemLabel="Activo" itemValue="1" />
+						<f:selectItem itemLabel="Inactivo" itemValue="0" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+				<p:separator id="separator" />
+				<p:commandButton update=":lstGenero:datatable,growlNuevo,pgNuevo "
+					actionListener="#{generoMB.insertar}" oncomplete="dlgNuevo.hide()"
+					value=" Guardar" image="icon-add" title="Guardar" />
+				<p:commandButton update=":lstGenero" oncomplete="dlgNuevo.hide()"
+					value="Cancelar" image="icon-add" title="Cancelarr" />
+			</p:dialog>
+		</h:form>
+		
+		<h:form id="frmEditar">
+			<p:dialog header="Editar Genero" widgetVar="dlgEditar"
+				resizable="false" id="dlgEditar" showEffect="fade"
+				hideEffect="explode" modal="false">
+
+				<p:growl id="growlEditar" showDetail="true" sticky="true" />
+
+				<h:panelGrid id="pgEditar" columns="2" cellpadding="4"
+					style="margin:0 auto;">
+
+					<h:outputText value="Descripción:" />
+					<p:inputText value="#{generoMB.genero.descripcion}" />
+
+					<h:outputText value="Estado:" />
+					<p:selectOneMenu id="estado" value="#{generoMB.genero.estado}">
+						<f:selectItem itemLabel="--Selecciones--" itemValue="" />
+						<f:selectItem itemLabel="Activo" itemValue="1" />
+						<f:selectItem itemLabel="Inactivo" itemValue="0" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+				<p:separator id="separator" />
+				<p:commandButton update=":lstGenero:datatable,growlEditar,dlgEditar "
+					actionListener="#{generoMB.editar}" oncomplete="dlgEditar.hide()"
+					value=" Editar" image="icon-add" title="Editar" />
+				<p:commandButton update=":lstGenero" oncomplete="dlgEditar.hide()"
+					value="Cancelar" image="icon-add" title="Cancelarr" />
+			</p:dialog>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
